@@ -8,6 +8,7 @@ cd dnn
 mkdir datasets
 mkdir models
 mkdir venvs
+mkdir local_datasets
 
 sudo apt-get install python3 python3-dev python3-setuptools python3-pip
 

@@ -7,9 +7,9 @@ echo -e "\n<== Python venv ==>\n"
 
 cd venvs
 source opencv_dnn_venv/bin/activate
-pip install numpy -y
-#sudo apt-get install python-dev
-#sudo apt-get install python3-dev 
+pip install numpy
+sudo apt-get install python-dev
+sudo apt-get install python3-dev 
 cd ..
 
 echo -e "\n<== OpenCV ==>\n"
@@ -25,11 +25,11 @@ git checkout 4.x
 echo -e "\n<== Cmake ==>\n"
 
 cd build
-cmake -D \
-	-DCMAKE_BUILD_TYPE=RELEASE \
-	-DPYTHON3_EXECUTABLE=~/dnn/venvs/opencv_dnn_venv/bin/python3 \
-	-DPYTHON3_NUMPY_INCLUDE_DIRS=~/dnn/venvs/opencv_dnn_venv/lib/python3.8/site-packages/numpy/core/include \
-	-DPYTHON3_PACKAGES_PATH=~/dnn/venvs/opencv_dnn_venv/lib/python3.8/site-packages \
+cmake   -D CMAKE_BUILD_TYPE=RELEASE \
+	-D PYTHON3_EXECUTABLE=~/dnn/venvs/opencv_dnn_venv/bin/python3 \
+	-D PYTHON3_NUMPY_INCLUDE_DIRS=~/dnn/venvs/opencv_dnn_venv/lib/python3.8/site-packages/numpy/core/include \
+	-D PYTHON3_PACKAGES_PATH=~/dnn/venvs/opencv_dnn_venv/lib/python3.8/site-packages \
+	-D OPENCV_PYTHON3_INSTALL_PATH=~/dnn/venvs/opencv_dnn_venv/lib/python3.8/site-packages \
 	../opencv
 
 

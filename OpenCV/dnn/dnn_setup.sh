@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo -e "\n<== Folders ==>\n"
+
 cd ~/
 
 mkdir dnn
@@ -10,12 +12,18 @@ mkdir models
 mkdir venvs
 mkdir local_datasets
 
-sudo apt-get install python3 python3-dev python3-setuptools python3-pip
+
+echo -e "\n<== Python venv ==>\n"
+
+sudo apt install python3 python3-dev python3-setuptools python3-pip python3.8-venv
 
 cd venvs
 python3 -m venv opencv_dnn_venv
 source opencv_dnn_venv/bin/activate
 cd ..
+
+
+echo -e "\n<== OpenVino ==>\n"
 
 git clone https://github.com/openvinotoolkit/open_model_zoo.git
 cd open_model_zoo
@@ -27,7 +35,11 @@ pip install --upgrade --force-reinstall .
 cd ..
 cd model_tools
 python3 setup.py install
+pip install openvino-dev
 cd ~/dnn
+
+
+echo -e "\n<== Models ==>\n"
 
 cd models
 omz_downloader --name alexnet
